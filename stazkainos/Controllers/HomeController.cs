@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity.Validation;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using stazkainos.DAL;
 using stazkainos.Models;
-using System.Data.SqlClient;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace stazkainos.Controllers
 {
@@ -20,9 +12,9 @@ namespace stazkainos.Controllers
 
         public ActionResult Index()
         {
-            CSVReader reader = new CSVReader();
-            List<FundValue> fundList = new List<FundValue>();
-            fundList = reader.Parse();
+            //CSVReader reader = new CSVReader();
+            //List<FundValue> fundList = new List<FundValue>();
+            //fundList = reader.Parse();
            // DatabaseContext context = new DatabaseContext();
            // var a =context.Database.ExecuteSqlCommand("GetFunds");
            // var f = context.Funds;
@@ -41,7 +33,7 @@ namespace stazkainos.Controllers
 
 
             // context.Dispose();
-            return View(temp);
+            return View();
         }
 
     }

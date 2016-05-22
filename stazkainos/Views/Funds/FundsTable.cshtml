@@ -1,0 +1,32 @@
+﻿@model IEnumerable<stazkainos.Models.FundValue>
+
+<table style border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fundDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.value)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                if (item.fundDate != null)
+                {
+                    DateTime date =(DateTime) item.fundDate;
+                    String displaydate = date.ToShortDateString();
+                    @Html.Raw(displaydate)
+                }
+                ;
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value)
+        </td>
+    </tr>
+}
+
+</table>

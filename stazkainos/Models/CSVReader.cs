@@ -27,7 +27,7 @@ namespace stazkainos.Models
 
                             insertval.value = double.Parse(fields[1], CultureInfo.InvariantCulture);
                             insertval.fundDate = DateTime.ParseExact(fields[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            insertval.fundDate=insertval.fundDate.Value.AddHours(12);
+                            insertval.fundDate=insertval.fundDate.AddHours(12);
                            
                             fundList.Add(insertval);
                         }

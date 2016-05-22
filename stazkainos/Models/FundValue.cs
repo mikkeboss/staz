@@ -8,7 +8,7 @@ namespace stazkainos.Models
     {
         
         public int Id { get; set; }
-        public DateTime? fundDate { get; set; }
+        public DateTime fundDate { get; set; }
         public double value { get; set; }
 
         public FundValue(DateTime ndate, double nvalue)

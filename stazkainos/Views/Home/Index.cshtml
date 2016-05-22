@@ -1,31 +1,15 @@
-﻿@model IEnumerable<stazkainos.Models.FundValue>
+﻿@using stazkainos.Controllers
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-
-
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fundDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.value)
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fundDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.value)
-        </td>
-    </tr>
-}
-
-</table>
+<div>
+    @{Html.RenderAction("FundsChart", "Funds");}
+</div>
+<div >
+    @{
+        Html.RenderAction("FundsTable", "Funds");
+    }
+</div>
