@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using DotNet.Highcharts.Enums;
 using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;
 using stazkainos.DAL;
@@ -33,7 +34,13 @@ namespace stazkainos.Controllers
             DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("Fundusz")
         .SetXAxis(new XAxis
         {
-            Categories = xDates 
+            Categories = xDates,
+           TickInterval = 50,
+            Labels = new XAxisLabels
+            {
+                Align = HorizontalAligns.Right,
+                Rotation = -90
+            }
         })
         .SetSeries(new Series
         {
