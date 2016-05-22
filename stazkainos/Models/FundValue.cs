@@ -1,19 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace stazkainos.Models
 {
+    [Table("dbo.FundVals")]
     public class FundValue
     {
-        private DateTime date;
-        private double value;
+        
+        public int Id { get; set; }
+        public DateTime? fundDate { get; set; }
+        public double value { get; set; }
 
-        public FundValue(DateTime date, double value)
+        public FundValue(DateTime ndate, double nvalue)
         {
-            this.date = date;
-            this.value = value;
+            fundDate = ndate;
+            value = nvalue;
+        }
+
+        public FundValue()
+        {
         }
     }
 }

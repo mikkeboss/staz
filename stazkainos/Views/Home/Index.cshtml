@@ -1,17 +1,31 @@
-﻿@{
-    Layout = null;
+﻿@model IEnumerable<stazkainos.Models.FundValue>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        home
-    </div>
-</body>
-</html>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fundDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.value)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fundDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.value)
+        </td>
+    </tr>
+}
+
+</table>

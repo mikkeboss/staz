@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using Microsoft.VisualBasic.FileIO;
+using stazkainos.DAL;
+
 namespace stazkainos.Models
 {
     public class CSVReader
     {
-       public  List<FundValue> Parse()
+        public List<FundValue> Parse()
         {
             using (TextFieldParser parser = new TextFieldParser(@"D:\data.csv"))
             {
@@ -23,9 +23,13 @@ namespace stazkainos.Models
                     {
                         if (fields != null)
                         {
-                            var date = DateTime.ParseExact(fields[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            var value = double.Parse(fields[1], CultureInfo.InvariantCulture);
-                            fundList.Add(new FundValue(date,value));
+                            FundValue insertval = new FundValue();
+
+                            insertval.value = double.Parse(fields[1], CultureInfo.InvariantCulture);
+                            insertval.fundDate = DateTime.ParseExact(fields[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            insertval.fundDate=insertval.fundDate.Value.AddHours(12);
+                           
+                            fundList.Add(insertval);
                         }
                     }
                     catch (NullReferenceException ex)
