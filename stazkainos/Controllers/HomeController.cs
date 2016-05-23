@@ -15,18 +15,18 @@ namespace stazkainos.Controllers
             //CSVReader reader = new CSVReader();
             //List<FundValue> fundList = new List<FundValue>();
             //fundList = reader.Parse();
-           // DatabaseContext context = new DatabaseContext();
-           // var a =context.Database.ExecuteSqlCommand("GetFunds");
-           // var f = context.Funds;
-           // context.Funds.AddRange(fundList);
-           // context.SaveChanges();
-           // var ff = context.Funds;
+            // DatabaseContext context = new DatabaseContext();
+            // var a =context.Database.ExecuteSqlCommand("GetFunds");
+            // var f = context.Funds;
+            // context.Funds.AddRange(fundList);
+            // context.SaveChanges();
+            // var ff = context.Funds;
             DatabaseHandler db = new DatabaseHandler();
-            var temp=db.GetFundValues();
+            var temp = db.GetFundValues();
 
-           
-            
-            
+
+
+
 
 
 
@@ -36,5 +36,10 @@ namespace stazkainos.Controllers
             return View();
         }
 
+        public ActionResult dd()
+        {
+            return View();
+
+        }
     }
 }

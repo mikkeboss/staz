@@ -1,15 +1,75 @@
-﻿@using stazkainos.Controllers
+﻿    {
+    Layout = "~/Views/Shared/_Layout.cshtml";}
+@section scripts {
+    <script>
+        @Scripts.Render("~/Content/themes/base/css")
 
-@{
-    ViewBag.Title = "Index";
+        $(function() {
+            $('input[id="daterange"]')
+                .daterangepicker({
+                        "startDate": "01/05/1998",
+                        "endDate": "05/12/2016",
+                        "minDate": "01/05/1998",
+                        "maxDate": "05/12/2016"
+                    },
+                    function(start, end, label) {
+                        console.log("New date range selected: " +
+                            start.format('YYYY-MM-DD') +
+                            " to " +
+                            end.format('YYYY-MM-DD') +
+                            " (predefined range: " +
+                            label +
+                            ")");
+                      /*  var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                document.getElementById("testchart").innerHTML = xhttp.responseText;
+                                console.log(xhttp.responseText);
+                            }
+                        };
+                        xhttp.open("POST", "/Funds/FundsChart/", true);
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send("start=" + start.format('YYYY-MM-DD') + "&stop=" + end.format('YYYY-MM-DD'));
+
+                        */
+                    });
+        });
+
+
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 }
 
-<h2>Index</h2>
-<div >
-    @{Html.RenderAction("FundsChart", "Funds");}
-</div>
-<div >
-    @{
-        Html.RenderAction("FundsTable", "Funds");
-    }
+
+
+
+
+<div class="container">
+    <div id="chart">
+        
+        @{
+            Html.RenderAction("FundsChart", "Funds");
+        }
+    </div>
+    <div id="testchart"></div>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <input type="text" name="val" id="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM"/>
+            <input type="submit" value="WYŚLIJ" class="btn my-button " />
+        }
+
+
+
+    </div>
+    <div class="table table-responsive">
+        @{
+    Html.RenderAction("FundsTable", "Funds");
+        }
+    </div>
 </div>
