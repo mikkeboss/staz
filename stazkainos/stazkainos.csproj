@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\CSVReader.cs" />
+    <Compile Include="Models\CapitalCalculator.cs" />
     <Compile Include="Models\FundValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

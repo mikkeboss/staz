@@ -62,7 +62,7 @@ namespace stazkainos.Controllers
             string[] dates = val.Split('-');
             DateTime startDate = DateTime.ParseExact(dates[0], "MM/dd/yyyy ", CultureInfo.InvariantCulture);
             DateTime stopDate = DateTime.ParseExact(dates[1], " MM/dd/yyyy", CultureInfo.InvariantCulture);
-            var cutList = from FundVal in fundList where FundVal.fundDate > startDate && FundVal.fundDate < stopDate select FundVal;
+            var cutList = from FundVal in fundList where FundVal.fundDate >= startDate && FundVal.fundDate <= stopDate select FundVal;
             List<FundValue> trimList = cutList.ToList();
             var xDates = trimList.Select(i => i.fundDate.ToShortDateString()).ToArray();
             var doublevals = trimList.Select(i => i.value).ToArray();
