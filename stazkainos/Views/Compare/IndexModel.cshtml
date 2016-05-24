@@ -1,0 +1,34 @@
+﻿@model stazkainos.Models.CompareModel (stazkainos.Models)
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row comment-field">
+    @using (Html.BeginForm())
+            {
+        <div class="col-md-6 " contenteditable="true">
+            @Html.ValidationSummary(true)
+            <p>
+                
+                @Html.TextBoxFor(x => x.Money)
+                @Html.ValidationMessageFor(x => x.Money)
+
+                @Html.TextBoxFor(x=>x.Percent)
+                @Html.ValidationMessageFor(x=>x.Percent)
+
+                @Html.TextBoxFor(x=>x.StartDate)
+                @Html.ValidationMessageFor(x=>x.StartDate)
+
+                @Html.TextBoxFor(x=>x.EndDate)
+                @Html.ValidationMessageFor(x=>x.EndDate)
+            </p>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <input type="submit" value="WYŚLIJ" class="btn my-button " />
+            </p>
+        </div>
+            }
+</div>

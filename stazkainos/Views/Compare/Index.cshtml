@@ -1,0 +1,66 @@
+﻿@model stazkainos.Models.CompareModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts {
+    <script>
+        @Scripts.Render("~/Content/themes/base/css")
+
+        $(function() {
+            $('input[name="Range"]')
+                .daterangepicker({
+                        "startDate": "01/05/1998",
+                        "endDate": "05/12/2016",
+                        "minDate": "01/05/1998",
+                        "maxDate": "05/12/2016"
+                    },
+                    function(start, end, label) {
+                        console.log("New date range selected: " +
+                            start.format('YYYY-MM-DD') +
+                            " to " +
+                            end.format('YYYY-MM-DD') +
+                            " (predefined range: " +
+                            label +
+                            ")");
+
+                    });
+        });
+
+        function myFunction() {
+            //document.getElementById("")
+            console.log("dasdasda");
+        }
+    </script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+<link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
+<link rel="stylesheet" href="~/Content/bootstrap.css">
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+}
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+
+    @Html.ValidationSummary(true)
+    <p>
+        @Html.DisplayNameFor(x => x.Money)
+        @Html.TextBoxFor(x => x.Money)
+        @Html.ValidationMessageFor(x => x.Money)
+    </p>
+    <p>
+        @Html.DisplayNameFor(x => x.Percent)
+        @Html.TextBoxFor(x => x.Percent)
+        @Html.ValidationMessageFor(x => x.Percent)
+    </p>
+    <p>
+        @Html.DisplayNameFor(x => x.Range)
+        @Html.TextBoxFor(x => x.Range)
+        @Html.ValidationMessageFor(x => x.Range)
+    </p>
+
+    <p>
+        <input type="submit" onclick="myFunction()" value=" wyślij" class="btn my-button " />
+    </p>
+}
