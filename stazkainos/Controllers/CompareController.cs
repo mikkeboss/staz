@@ -32,13 +32,18 @@ namespace stazkainos.Controllers
         [HttpPost]
         public ActionResult Index(CompareModel model)
         {
-            CapitalCalculator calc = new CapitalCalculator();
-            calc.Money = model.Money;
-            calc.Percent = model.Percent;
-            string[] dates = model.Range.Split('-');
-            calc.StartDate = DateTime.ParseExact(dates[0], "MM/dd/yyyy ", CultureInfo.InvariantCulture);
-            calc.StopDate = DateTime.ParseExact(dates[1], " MM/dd/yyyy", CultureInfo.InvariantCulture);
-            calc.GetIncome(FundList);
+            if (ModelState.IsValid)
+            {
+                CapitalCalculator calc = new CapitalCalculator();
+                calc.Money = model.Money;
+                calc.Percent = model.Percent;
+                string[] dates = model.Range.Split('-');
+                calc.StartDate = DateTime.ParseExact(dates[0], "MM/dd/yyyy ", CultureInfo.InvariantCulture);
+                calc.StopDate = DateTime.ParseExact(dates[1], " MM/dd/yyyy", CultureInfo.InvariantCulture);
+                var result = calc.GetIncome(FundList);
+                @ViewBag.depositIncome = result.Item2;
+                @ViewBag.fundIncome = result.Item1;
+            }
             return View(model);
         }
     }

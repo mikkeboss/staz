@@ -11,7 +11,7 @@ namespace stazkainos.Models
     {
 
         [Required(ErrorMessage = "Proszę podać okres inwestycji")]
-        [DisplayName("Data początkowa")]
+        [DisplayName("Wybierz daty")]
         public string Range { get; set; }
 
         [Required(ErrorMessage = "Proszę podać ilość środków")]
@@ -20,8 +20,8 @@ namespace stazkainos.Models
         public decimal Money { get; set; }
 
         [Required(ErrorMessage = "Proszę podać oprocentowanie")]
-        [Range(0.01, 100.00,
-            ErrorMessage = "Oprocentowanie musi zawierać się między 0.01 i 100.00")]
+        [Range(0.01, 1.00,
+            ErrorMessage = "Oprocentowanie musi zawierać się między 0.01 i 1.00")]
         public float Percent { get; set; }
     }
 }

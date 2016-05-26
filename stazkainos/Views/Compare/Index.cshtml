@@ -29,7 +29,7 @@
 
         function myFunction() {
             //document.getElementById("")
-            console.log("dasdasda");
+           
         }
     </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -64,3 +64,11 @@
         <input type="submit" onclick="myFunction()" value=" wyślij" class="btn my-button " />
     </p>
 }
+<div class="container">
+    @if (@ViewBag.fundIncome != null && @ViewBag.depositIncome !=null)
+    {
+        <p> Zysk z funduszu to @ViewBag.fundIncome</p>
+        <p> Zysk z lokaty to @ViewBag.depositIncome</p>
+        
+    }
+</div>
