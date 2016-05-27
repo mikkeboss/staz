@@ -1,45 +1,50 @@
 ﻿@model stazkainos.Models.CompareModel
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+   
 @section scripts {
+    @Scripts.Render("~/Content/themes/base/css")
     <script>
-        @Scripts.Render("~/Content/themes/base/css")
+       
 
-        $(function() {
-            $('input[name="Range"]')
-                .daterangepicker({
-                        "startDate": "01/05/1998",
-                        "endDate": "05/12/2016",
-                        "minDate": "01/05/1998",
-                        "maxDate": "05/12/2016"
-                    },
-                    function(start, end, label) {
-                        console.log("New date range selected: " +
-                            start.format('YYYY-MM-DD') +
-                            " to " +
-                            end.format('YYYY-MM-DD') +
-                            " (predefined range: " +
-                            label +
-                            ")");
 
-                    });
-        });
 
-        function myFunction() {
-            //document.getElementById("")
-           
-        }
+
     </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
-<link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
-<link rel="stylesheet" href="~/Content/bootstrap.css">
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 }
-<h2>Index</h2>
+<h2>Porównanie zysków</h2>
+<script>
+
+    window.onload = function() {
+        $(function () {
+        $('input[name="Range"]')
+            .daterangepicker({
+                    "startDate": "01/05/1998",
+                    "endDate": "05/12/2016",
+                    "minDate": "01/05/1998",
+                    "maxDate": "05/12/2016"
+                },
+                function (start, end, label) {
+                    console.log("New date range selected: " +
+                        start.format('YYYY-MM-DD') +
+                        " to " +
+                        end.format('YYYY-MM-DD') +
+                        " (predefined range: " +
+                        label +
+                        ")");
+
+                });
+    });
+}
+    function myFunction() {
+        //document.getElementById("")
+
+    }
+</script>
 @using (Html.BeginForm())
 {
 
@@ -65,10 +70,20 @@
     </p>
 }
 <div class="container">
-    @if (@ViewBag.fundIncome != null && @ViewBag.depositIncome !=null)
+    @if (@ViewBag.fundIncome != null && @ViewBag.depositIncome != null)
     {
         <p> Zysk z funduszu to @ViewBag.fundIncome</p>
         <p> Zysk z lokaty to @ViewBag.depositIncome</p>
+
+    }
+</div>
+<div>
+    @if (@ViewBag.chart != null)
+    {
+        <script src="../../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="../../Scripts/Highcharts-4.0.1/js/highcharts.js" type="text/javascript"></script>
+        @ViewBag.chart;
         
     }
+        
 </div>

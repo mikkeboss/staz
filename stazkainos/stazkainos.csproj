@@ -157,6 +157,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChartDataBuilder.cs" />
+    <Compile Include="Models\ChartData.cs" />
     <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\CSVReader.cs" />
     <Compile Include="Models\CapitalCalculator.cs" />

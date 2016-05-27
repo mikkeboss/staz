@@ -4,36 +4,7 @@
     <script>
         @Scripts.Render("~/Content/themes/base/css")
 
-        $(function() {
-            $('input[id="daterange"]')
-                .daterangepicker({
-                        "startDate": "01/05/1998",
-                        "endDate": "05/12/2016",
-                        "minDate": "01/05/1998",
-                        "maxDate": "05/12/2016"
-                    },
-                    function(start, end, label) {
-                        console.log("New date range selected: " +
-                            start.format('YYYY-MM-DD') +
-                            " to " +
-                            end.format('YYYY-MM-DD') +
-                            " (predefined range: " +
-                            label +
-                            ")");
-                      /*  var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
-                            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                                document.getElementById("testchart").innerHTML = xhttp.responseText;
-                                console.log(xhttp.responseText);
-                            }
-                        };
-                        xhttp.open("POST", "/Funds/FundsChart/", true);
-                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                        xhttp.send("start=" + start.format('YYYY-MM-DD') + "&stop=" + end.format('YYYY-MM-DD'));
-
-                        */
-                    });
-        });
+       
 
 
     </script>
@@ -69,7 +40,38 @@
     </div>
     <div class="table table-responsive">
         @{
-    Html.RenderAction("FundsTable", "Funds");
+            Html.RenderAction("FundsTable", "Funds");
         }
     </div>
+    <script> $(function() {
+            $('input[id="daterange"]')
+                .daterangepicker({
+                        "startDate": "01/05/1998",
+                        "endDate": "05/12/2016",
+                        "minDate": "01/05/1998",
+                        "maxDate": "05/12/2016"
+                    },
+                    function(start, end, label) {
+                        console.log("New date range selected: " +
+                            start.format('YYYY-MM-DD') +
+                            " to " +
+                            end.format('YYYY-MM-DD') +
+                            " (predefined range: " +
+                            label +
+                            ")");
+                      /*  var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                document.getElementById("testchart").innerHTML = xhttp.responseText;
+                                console.log(xhttp.responseText);
+                            }
+                        };
+                        xhttp.open("POST", "/Funds/FundsChart/", true);
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send("start=" + start.format('YYYY-MM-DD') + "&stop=" + end.format('YYYY-MM-DD'));
+
+                        */
+                    });
+ });
+    </script>
 </div>

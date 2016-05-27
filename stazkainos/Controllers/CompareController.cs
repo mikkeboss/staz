@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using stazkainos.DAL;
 using stazkainos.Models;
@@ -43,6 +41,8 @@ namespace stazkainos.Controllers
                 var result = calc.GetIncome(FundList);
                 @ViewBag.depositIncome = result.Item2;
                 @ViewBag.fundIncome = result.Item1;
+                @ViewBag.chart = calc.Chart;
+                return View(model);
             }
             return View(model);
         }

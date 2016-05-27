@@ -19,6 +19,7 @@ namespace stazkainos.Models
         [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal Money { get; set; }
 
+        [DisplayName("Oprocentowanie")]
         [Required(ErrorMessage = "Proszę podać oprocentowanie")]
         [Range(0.01, 1.00,
             ErrorMessage = "Oprocentowanie musi zawierać się między 0.01 i 1.00")]

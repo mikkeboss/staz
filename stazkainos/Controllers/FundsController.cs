@@ -72,6 +72,7 @@ namespace stazkainos.Controllers
                 interval = trimList.Count/80;
             else
                 interval = 1;
+
             DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("Fundusz")
        .SetXAxis(new XAxis
        {
@@ -93,7 +94,8 @@ namespace stazkainos.Controllers
        });
 
             return View(chart);
-       }
+            
+        }
 
     }
 }
