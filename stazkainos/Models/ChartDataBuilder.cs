@@ -24,7 +24,7 @@ namespace stazkainos.Models
                     Fund = fund.ElementAt(counter)
                 });
             }
-            DateTime capitalizationDate = ChartData.ElementAt(0).Date;
+            DateTime capitalizationDate = ChartData.ElementAt(0).Date.AddMonths(1);
             for (int k = 0; k < deposit.Count; k++)
             {
                 int index = ChartData.FindIndex(r => r.Date == capitalizationDate);

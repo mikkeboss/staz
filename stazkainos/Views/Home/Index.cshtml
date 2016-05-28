@@ -1,13 +1,8 @@
-﻿    {
-    Layout = "~/Views/Shared/_Layout.cshtml";}
-@section scripts {
+﻿@section scripts {
     <script>
         @Scripts.Render("~/Content/themes/base/css")
-
-       
-
-
     </script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
@@ -21,57 +16,60 @@
 
 
 <div class="container">
-    <div id="chart">
-        
-        @{
-            Html.RenderAction("FundsChart", "Funds");
-        }
+    <div class="row">
+        <div class="col-xs-12 text-center header">
+            <h1> Michał Etmański</h1>
+            <p>Zadanie konkursowe Kainos</p>
+        </div>
     </div>
-    <div id="testchart"></div>
-    <div>
-        @using (Html.BeginForm())
-        {
-            <input type="text" name="val" id="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM"/>
-            <input type="submit" value="WYŚLIJ" class="btn my-button " />
-        }
-
-
-
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href=@Url.Action("Index")>Strona główna</a></li>
+                    <li><a href=@Url.Action("Index","Compare")>Porównaj</a></li>
+               </ul>
+            </div>
+        </nav>
     </div>
-    <div class="table table-responsive">
-        @{
-            Html.RenderAction("FundsTable", "Funds");
-        }
+    <div class="row">
+        <div class="col-xs-12" id="chart">
+
+            @{
+                Html.RenderAction("FundsChart", "Funds");
+            }
+        </div>
     </div>
-    <script> $(function() {
-            $('input[id="daterange"]')
-                .daterangepicker({
+    <div class="row">
+        <div id="testchart" class="col-xs-4 col-xs-offset-5">
+            <div>
+                @using (Html.BeginForm())
+                {
+                    <input type="text" size="24" name="val" id="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                    <input type="submit" value="Wybierz zakres dat" class="btn-primary my-button" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-5">
+            @{
+                Html.RenderAction("FundsTable", "Funds");
+            }
+        </div>
+        <script>
+            $(function () {
+                $('input[id="daterange"]')
+                    .daterangepicker({
                         "startDate": "01/05/1998",
                         "endDate": "05/12/2016",
                         "minDate": "01/05/1998",
                         "maxDate": "05/12/2016"
                     },
-                    function(start, end, label) {
-                        console.log("New date range selected: " +
-                            start.format('YYYY-MM-DD') +
-                            " to " +
-                            end.format('YYYY-MM-DD') +
-                            " (predefined range: " +
-                            label +
-                            ")");
-                      /*  var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
-                            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                                document.getElementById("testchart").innerHTML = xhttp.responseText;
-                                console.log(xhttp.responseText);
-                            }
-                        };
-                        xhttp.open("POST", "/Funds/FundsChart/", true);
-                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                        xhttp.send("start=" + start.format('YYYY-MM-DD') + "&stop=" + end.format('YYYY-MM-DD'));
+                        function (start, end, label) {
 
-                        */
-                    });
- });
-    </script>
+                        });
+            });
+        </script>
+    </div>
 </div>

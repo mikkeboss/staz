@@ -2,88 +2,90 @@
    
 @section scripts {
     @Scripts.Render("~/Content/themes/base/css")
-    <script>
-       
-
-
-
-
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+   <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
     <link rel="stylesheet" href="~/Content/bootstrap.css">
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 }
-<h2>Porównanie zysków</h2>
-<script>
-
-    window.onload = function() {
-        $(function () {
-        $('input[name="Range"]')
-            .daterangepicker({
-                    "startDate": "01/05/1998",
-                    "endDate": "05/12/2016",
-                    "minDate": "01/05/1998",
-                    "maxDate": "05/12/2016"
-                },
-                function (start, end, label) {
-                    console.log("New date range selected: " +
-                        start.format('YYYY-MM-DD') +
-                        " to " +
-                        end.format('YYYY-MM-DD') +
-                        " (predefined range: " +
-                        label +
-                        ")");
-
-                });
-    });
-}
-    function myFunction() {
-        //document.getElementById("")
-
-    }
-</script>
-@using (Html.BeginForm())
-{
-
-    @Html.ValidationSummary(true)
-    <p>
-        @Html.DisplayNameFor(x => x.Money)
-        @Html.TextBoxFor(x => x.Money)
-        @Html.ValidationMessageFor(x => x.Money)
-    </p>
-    <p>
-        @Html.DisplayNameFor(x => x.Percent)
-        @Html.TextBoxFor(x => x.Percent)
-        @Html.ValidationMessageFor(x => x.Percent)
-    </p>
-    <p>
-        @Html.DisplayNameFor(x => x.Range)
-        @Html.TextBoxFor(x => x.Range)
-        @Html.ValidationMessageFor(x => x.Range)
-    </p>
-
-    <p>
-        <input type="submit" onclick="myFunction()" value=" wyślij" class="btn my-button " />
-    </p>
-}
-<div class="container">
-    @if (@ViewBag.fundIncome != null && @ViewBag.depositIncome != null)
+<<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center header">
+            <h1> Michał Etmański</h1>
+            <p>Zadanie konkursowe Kainos</p>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li ><a href=@Url.Action("Index","Home")>Strona główna</a></li>
+                    <li class="active"><a href=@Url.Action("Index")>Porównaj</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <script>
+        window.onload = function () {
+            $(function () {
+                $('input[name="Range"]')
+                    .daterangepicker({
+                        "startDate": "01/05/1998",
+                        "endDate": "05/12/2016",
+                        "minDate": "01/05/1998",
+                        "maxDate": "05/12/2016"
+                    },
+                        function (start, end, label) {
+                           
+                        });
+            });
+        }
+        function myFunction() {
+            
+        }
+    </script>
+    @using (Html.BeginForm())
     {
-        <p> Zysk z funduszu to @ViewBag.fundIncome</p>
-        <p> Zysk z lokaty to @ViewBag.depositIncome</p>
 
+        @Html.ValidationSummary(true)
+        <p>
+            @Html.DisplayNameFor(x => x.Money)
+            @Html.TextBoxFor(x => x.Money)
+            @Html.ValidationMessageFor(x => x.Money)
+        </p>
+        <p>
+            @Html.DisplayNameFor(x => x.Percent)
+            @Html.TextBoxFor(x => x.Percent)
+            @Html.ValidationMessageFor(x => x.Percent)
+        </p>
+        <p>
+            @Html.DisplayNameFor(x => x.Range)
+            @Html.TextBoxFor(x => x.Range)
+            @Html.ValidationMessageFor(x => x.Range)
+        </p>
+
+        <p>
+            <input type="submit" value="Oblicz" class="btn my-button " />
+        </p>
     }
-</div>
-<div>
-    @if (@ViewBag.chart != null)
-    {
-        <script src="../../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-        <script src="../../Scripts/Highcharts-4.0.1/js/highcharts.js" type="text/javascript"></script>
-        @ViewBag.chart;
-        
-    }
-        
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-5">
+            @if (@ViewBag.fundIncome != null && @ViewBag.depositIncome != null)
+            {
+                <p> Zysk z funduszu to @ViewBag.fundIncome</p>
+                <p> Zysk z lokaty to @ViewBag.depositIncome</p>
+            }
+        </div>
+    </div>
+     <div class="row">
+         <div class="col-xs-12">
+             @if (@ViewBag.chart != null)
+             {
+                 <script src="../../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+                 <script src="../../Scripts/Highcharts-4.0.1/js/highcharts.js" type="text/javascript"></script>
+                 @ViewBag.chart
+             }
+         </div>
+     </div>
 </div>

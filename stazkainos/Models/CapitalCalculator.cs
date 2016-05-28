@@ -34,6 +34,8 @@ namespace stazkainos.Models
                 numberOfMonths = CountMonths(dates.Item1.fundDate,dates.Item2.fundDate)- 1;
             else
                 numberOfMonths = CountMonths(dates.Item1.fundDate, dates.Item2.fundDate);
+            if (numberOfMonths == 0)
+                return 0;
             var income = GetPartialDepositIncome(numberOfMonths);
             return income.ElementAt(income.Count-1);
         }
@@ -42,11 +44,17 @@ namespace stazkainos.Models
         {
             List<decimal> monthlyIncome = new List<decimal>();
             decimal totalIncome = Money;
-            for (int counter = 0; counter < numberOfMonths; counter++)
-            {
-                totalIncome += (decimal)(decimal.ToDouble(totalIncome)*(Percent/Capitalization));
-                monthlyIncome.Add(decimal.Round(totalIncome-Money,2));
-            }
+            if(numberOfMonths>0)
+                for (int counter = 0; counter < numberOfMonths; counter++)
+                {
+                    totalIncome += (decimal)(decimal.ToDouble(totalIncome)*(Percent/Capitalization));
+                    monthlyIncome.Add(decimal.Round(totalIncome-Money,2));
+                }
+            else
+                for (int counter = 0; counter < numberOfMonths; counter++)
+                {
+                    monthlyIncome.Add(0);
+                }
             return monthlyIncome;
         }
 
@@ -76,7 +84,8 @@ namespace stazkainos.Models
             double unitcount = decimal.ToDouble(Money) / fundList.ElementAt(0).value;
             foreach (var fund in fundList)
             {
-                partialIncome.Add((decimal)((fund.value * unitcount))-Money);
+                decimal valueToAdd=(decimal)(fund.value * unitcount)-Money;
+                partialIncome.Add(decimal.Round(valueToAdd,2));
             }
             return partialIncome;
         }

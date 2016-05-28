@@ -2,30 +2,31 @@
 @{
     Layout = null;
 }
-<table style border="1">
+<table style="padding: 5px; border: 1px solid black; margin-top: 15px;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fundDate)
+        <th style ="padding: 5px; border: 1px solid black;">
+            Data
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.value)
+        <th style="padding: 5px; border: 1px solid black;">
+            Wartość
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td style="padding: 5px; border: 1px solid black;">
             @{
-                if (item.fundDate != null)
-                {
-                    DateTime date =(DateTime) item.fundDate;
-                    String displaydate = date.ToShortDateString();
-                    @Html.Raw(displaydate)
-                }
-                ;
+    if (item.fundDate != null)
+    {
+        DateTime date = (DateTime)item.fundDate;
+        String displaydate = date.ToShortDateString();
+        @Html.Raw(displaydate)
+    }
+    ;
             }
         </td>
-        <td>
+
+        <td style="padding: 5px; border: 1px solid black;">
             @Html.DisplayFor(modelItem => item.value)
         </td>
     </tr>

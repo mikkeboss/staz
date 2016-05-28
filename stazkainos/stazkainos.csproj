@@ -335,7 +335,6 @@
     <Content Include="Views\Funds\FundsTable.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Funds\FundsChart.cshtml" />
-    <Content Include="Views\Compare\IndexModel.cshtml" />
     <Content Include="Views\Compare\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

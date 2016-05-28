@@ -11,11 +11,9 @@ namespace stazkainos.Controllers
     {
         //
         // GET: /Compare/
-        private CompareModel Comparedata;
         private List<FundValue> FundList;
         public CompareController()
         {
-            Comparedata=new CompareModel();
             DatabaseHandler db = new DatabaseHandler();
             FundList = db.GetFundValues();
 
@@ -32,16 +30,19 @@ namespace stazkainos.Controllers
         {
             if (ModelState.IsValid)
             {
-                CapitalCalculator calc = new CapitalCalculator();
-                calc.Money = model.Money;
-                calc.Percent = model.Percent;
+
+                CapitalCalculator calc = new CapitalCalculator
+                {
+                    Money = model.Money,
+                    Percent = model.Percent
+                };
                 string[] dates = model.Range.Split('-');
                 calc.StartDate = DateTime.ParseExact(dates[0], "MM/dd/yyyy ", CultureInfo.InvariantCulture);
                 calc.StopDate = DateTime.ParseExact(dates[1], " MM/dd/yyyy", CultureInfo.InvariantCulture);
                 var result = calc.GetIncome(FundList);
-                @ViewBag.depositIncome = result.Item2;
-                @ViewBag.fundIncome = result.Item1;
-                @ViewBag.chart = calc.Chart;
+                ViewBag.depositIncome = result.Item2;
+                ViewBag.fundIncome = result.Item1;
+                ViewBag.chart = calc.Chart;
                 return View(model);
             }
             return View(model);
