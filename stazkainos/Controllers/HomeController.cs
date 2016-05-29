@@ -16,10 +16,9 @@ namespace stazkainos.Controllers
             //List<FundValue> fundList = new List<FundValue>();
             //fundList = reader.Parse();
             // DatabaseContext context = new DatabaseContext();
-
             return View();
         }
 
-       
+        
     }
 }

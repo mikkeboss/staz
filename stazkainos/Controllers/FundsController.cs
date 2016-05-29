@@ -57,7 +57,7 @@ namespace stazkainos.Controllers
         }
 
         [HttpPost]
-        public ActionResult FundsChart(string val)//string start, string stop)
+        public ActionResult FundsChart(string val)
         {
             string[] dates = val.Split('-');
             DateTime startDate = DateTime.ParseExact(dates[0], "MM/dd/yyyy ", CultureInfo.InvariantCulture);
